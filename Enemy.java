@@ -11,7 +11,7 @@ public class Enemy {
 
         this.level = (int)(Math.random() * player.getLevel() + 1 + levelOffset);
 
-        this.maxhp = 50 + (level * 25);
+        this.maxhp = 50 + (level * 15);
         this.hp = maxhp;
 
         this.strength = 3 + (level * 2);

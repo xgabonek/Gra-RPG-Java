@@ -44,7 +44,7 @@ public class Player {
         strength += 1;
         maxhp += 50;
         hp = maxhp;
-        System.out.print("Leveled up!");
+        System.out.println("Leveled up! Your current level is: " + getLevel());
     }
 
     public int getXp(){

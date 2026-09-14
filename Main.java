@@ -50,6 +50,7 @@ public class Main {
 
     public static void main_menu(Player player, ArrayList<Enemy> enemies){
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("--- Menu ---");
         System.out.println("1. Fight");
         System.out.println("2. Show player stats");
@@ -58,6 +59,12 @@ public class Main {
         System.out.println("Choose the operation (1-3): ");
 
         int operation = scanner.nextInt();
+
+        if (player.getLevel() >= 5){
+            System.out.println("--------------------");
+            System.out.println("BOSS FIGHT AVAILABLE!");
+            System.out.println("--------------------");
+        }
 
         switch(operation){
             case 1 ->{
@@ -85,13 +92,11 @@ public class Main {
 
         for (int i = 0; i < player.getLevel(); i++){
             double chance = Math.random() * 4;
+
             if (chance <= 2){
                 enemies.add(new Enemy("Skeleton", player, 2));
             }
             else if (chance <= 3){
-                enemies.add(new Enemy("Zombie", player, 1));
-            }
-            else{
                 enemies.add(new Enemy("Zombie", player, 1));
             }
         }
@@ -105,7 +110,6 @@ public class Main {
         Item sword = new Item("Sword");
         Item healing_potion = new Item("Healing Potion");
         
-        // Starting inventory
         player.addItem(sword);
         player.addItem(healing_potion);
         player.addItem(healing_potion);
