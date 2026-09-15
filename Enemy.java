@@ -5,18 +5,21 @@ public class Enemy {
     private int level;
     private int strength;
     private int xp;
+    private int gold;
 
     public Enemy(String name, Player player, int levelOffset){
         this.name = name;
 
         this.level = (int)(Math.random() * player.getLevel() + 1 + levelOffset);
 
-        this.maxhp = 50 + (level * 15);
+        this.maxhp = 45 + (level * 10);
         this.hp = maxhp;
 
-        this.strength = 3 + (level * 2);
+        this.strength = 4 + (level * 2);
 
-        this.xp = 50 * levelOffset;
+        this.xp = 35 * level;
+
+        this.gold = 15 * level;
     }
 
     public String getName(){
@@ -67,8 +70,16 @@ public class Enemy {
         this.xp = xp;
     }
 
+    public int getGold(){
+        return gold;
+    }
+
+    public void setGold(int gold){
+        this.gold = gold;
+    }
+
     public int dealDamage(){
-        return strength + (int)(Math.random() * 6);
+        return strength + (int)(Math.random() * 4);
     }
 
     public void takeDamage(int damage){

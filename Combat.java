@@ -7,6 +7,9 @@ public class Combat{
         if (enemy.getHp() <= 0){
             System.out.println(player.getName() + " has defeated the " + enemy.getName() + "!");
             player.gainXp(enemy.getXp());
+            System.out.println("You have gained " + enemy.getXp() + " xp!");
+            player.gainGold(enemy.getGold());
+            System.out.println("You have gained " + enemy.getGold() + " gold!");
             return true;
         }
         damage = enemy.dealDamage();

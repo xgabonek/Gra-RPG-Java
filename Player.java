@@ -9,6 +9,7 @@ public class Player {
     private int hp;
     private int maxhp;
     private int strength;
+    private double gold;
     
     // Konstruktor
     public Player(String name){
@@ -18,9 +19,10 @@ public class Player {
         this.level = 1;
         this.xp = 0;
         this.xp_needed = 100;
-        this.maxhp = 250 + ((level - 1) * 25);
+        this.maxhp = 120 + ((level - 1) * 15);
         this.hp = maxhp;
         this.strength = 5 + (level * 2);
+        this.gold = 0;
     }
 
     // Gettery/Settery
@@ -41,8 +43,8 @@ public class Player {
 
     public void levelUp(){
         level++;
-        strength += 1;
-        maxhp += 50;
+        strength += 2;
+        maxhp += 20;
         hp = maxhp;
         System.out.println("Leveled up! Your current level is: " + getLevel());
     }
@@ -61,7 +63,7 @@ public class Player {
         if (xp >= xp_needed){
             xp -= xp_needed;
             levelUp();
-            xp_needed *= 2;
+            xp_needed = (int)(xp_needed * 1.5);
         }
     }
 
@@ -100,6 +102,18 @@ public class Player {
         this.strength = strength;
     }
 
+    public double getGold(){
+        return gold;
+    }
+
+    public void setGold(double gold){
+        this.gold = gold;
+    }
+
+    public void gainGold(int amount){
+        gold += amount;
+    }
+
     // Inventory Management
     public void addItem(Item item){
         inventory.add(item);
@@ -115,7 +129,7 @@ public class Player {
 
     public void showInventory(){
         for (Item item : inventory){
-            System.out.println(item.getName());
+            System.out.println(item.name);
         }
     }
 }
