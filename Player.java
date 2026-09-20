@@ -10,6 +10,7 @@ public class Player {
     private int maxhp;
     private int strength;
     private double gold;
+    private int swiftness;
     
     // Konstruktor
     public Player(String name){
@@ -23,6 +24,7 @@ public class Player {
         this.hp = maxhp;
         this.strength = 5 + (level * 2);
         this.gold = 0;
+        this.swiftness = 5 * level;
     }
 
     // Gettery/Settery
@@ -81,6 +83,14 @@ public class Player {
 
     public void setHp(int hp){
         this.hp = Math.min(hp, maxhp);
+    }
+
+    public void setGold(int gold){
+        this.gold = gold;
+    }
+
+    public int getSwiftness(){
+        return swiftness;
     }
 
     public void takeDamage(int damage){

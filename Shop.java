@@ -33,7 +33,7 @@ public class Shop {
 
         for (int i = 0; i < player.getInventory().size(); i++){
             Item currentItem = player.getInventory().get(i);
-            System.out.println((i + 1) + ". " + currentItem.name + " - " + currentItem.gold + "$");
+            System.out.println((i + 1) + ". " + currentItem.name + " - " + currentItem.gold + " gold");
         }
 
         int choice = scanner.nextInt();
@@ -49,6 +49,6 @@ public class Shop {
         player.setGold(player.getGold() + sellPrice);
         player.getInventory().remove(itemToSell);
 
-        System.out.println("Succesfully sold: " + itemToSell + " for: " + sellPrice + "$");
+        System.out.println("Succesfully sold: " + itemToSell + " for: " + sellPrice + " gold");
     }
 }

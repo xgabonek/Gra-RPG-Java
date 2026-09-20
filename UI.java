@@ -20,6 +20,7 @@ public class UI {
         System.out.println(player.getName() + "'s Xp is: " + player.getXp());
         System.out.println(player.getName() + "'s Max Hp is: " + player.getMaxHp());
         System.out.println(player.getName() + "'s Strength is: " + player.getStrength());
+        System.out.println(player.getName() + "'s gold count is: " + player.getGold());
     }
 
     public static void shopUI(Player player){
@@ -27,7 +28,7 @@ public class UI {
         Shop shop = new Shop(player);
 
         System.out.println("Welcome to the shop!");
-        System.out.println("You have " + player.getGold() + "$");
+        System.out.println("You have " + player.getGold() + " gold");
 
         System.out.println("What would you like to do?");
         System.out.println("1. Buy an item");
@@ -43,7 +44,7 @@ public class UI {
                 for (int i = 0; i < shop.items.size(); i++){
                     Item item = shop.items.get(i);
                     System.out.println(
-                        (i + 1) + ". " + item.name + " - " + item.gold + "$"
+                        (i + 1) + ". " + item.name + " - " + item.gold + " gold"
                     );
                 }
 
@@ -78,8 +79,16 @@ public class UI {
         System.out.println("3. Show Inventory");
         System.out.println("4. Shop");
         System.out.println("5. Quit");
+        if (player.getLevel() >= 5){
+            System.out.println("6. Fight the boss");
+        }
         System.out.println("------------");
-        System.out.println("Choose the operation (1-5): ");
+        if (player.getLevel() < 5){
+            System.out.println("Choose the operation (1-5): ");
+        }
+        else{
+            System.out.println("Choose the operation (1-6): ");
+        }
 
         int operation = scanner.nextInt();
 
@@ -109,6 +118,17 @@ public class UI {
             }
             case 4 ->{
                 shopUI(player);
+            }
+            case 6 ->{
+                if (player.getLevel() >= 5){
+                    Enemy Diablo = new Enemy("Diablo", player, 5);
+                    enemies.clear();
+                    enemies.add(Diablo);
+                    Combat.bossFight(player, Diablo);
+                }
+                else{
+                    System.out.println("O ty szczwany lisie nie ma kurwa lvl 5 wbijaj");
+                }
             }
             case 5 ->{
                 System.out.println("Goodbye!");
