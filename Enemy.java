@@ -13,14 +13,14 @@ public class Enemy {
 
         this.level = (int)(Math.random() * player.getLevel() + 1 + levelOffset);
 
-        this.maxhp = 35 + (level * 10);
+        this.maxhp = 35 + (level * 7);
         this.hp = maxhp;
 
-        this.strength = 4 + (level * 2);
+        this.strength = 3 + (level * 2);
 
-        this.xp = 35 * level;
+        this.xp = 40 * level;
 
-        this.gold = 15 * level;
+        this.gold = 15 * (level + levelOffset);
 
         this.swiftness = 3 * level;
     }

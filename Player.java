@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Player {
     private String name;
@@ -138,8 +140,14 @@ public class Player {
     }
 
     public void showInventory(){
-        for (Item item : inventory){
-            System.out.println(item.name);
+        Map<String, Integer> quantity = new HashMap<>();
+
+        for(Item item : inventory){
+            quantity.put(item.name, quantity.getOrDefault(item.name, 0) + 1);
+        } 
+
+        for (String name : quantity.keySet()){
+            System.out.println(name + " x" + quantity.get(name));
         }
     }
 }
